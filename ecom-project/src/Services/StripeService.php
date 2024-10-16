@@ -24,12 +24,6 @@ class StripeService implements StripeServiceInterface {
 
   public function Paiement($panier, $id_order): string
   {
-    if (empty($panier)) {
-      throw new \Exception('The cart (panier) is empty before calling Paiement.');
-  }
-  $stripeUrl = $this->stripeService->Paiement($panier, $id_order);
-
-  
     $mySession = $this->requestStack->getSession();
 
     $session = Session::create([
@@ -58,16 +52,19 @@ class StripeService implements StripeServiceInterface {
     $products = [];
 
     foreach($panier as $item)
-    {
-      $product['price_data']['currency'] = "eur";
-      $product['price_data']['product_data']['name'] = $item["product"]->getName();
-      $product['price_data']['unit_amount'] = $item['product']->getPrice()*100;
-      $product['quantity'] = $item['quantity'];
+    { $product = [
+        'price_data' => [
+            'currency' => 'eur',
+            'product_data' => [
+                'name' => $item["product"]->getName(),
+            ],
+            'unit_amount' => $item['product']->getPrice() * 100, // Convert to cents
+        ],
+        'quantity' => $item['quantity'],
+      ];
+
       $products[] = $product;
     }
-    if (empty($products)) {
-      throw new \Exception('No products were created for line items.');
-  }
 
     return $products;
 

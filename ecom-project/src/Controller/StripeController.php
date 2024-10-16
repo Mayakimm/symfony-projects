@@ -27,14 +27,14 @@ class StripeController extends AbstractController
     }
 
     #[Route('/stripe/success/{order}', name: 'app_stripe_success')]
-    public function success($order, SessionInterface $session)
+    public function success($order, Session $session)
     {
-      $panier = $session->get('Panier', []);
+      $panier = $session->get('panier', []);
       $order = $this->orderRepository->find($order);
       $order->setPaid(1);
       $this->entityManagerInterface->flush();
 
-      $session->remove('Panier');
+      $session->remove('panier');
       return $this->render('stripe/index.html.twig', [
 
     ]);
@@ -53,7 +53,7 @@ class StripeController extends AbstractController
     #[Route('/stripe', name: 'app_stripe', methods:['GET'])]
     public function index(Session $session): Response
     {
-      $panier = $session->get("Panier", []);
+      $panier = $session->get("panier", []);
       $data = [];
       $total = 0;
 
@@ -65,7 +65,7 @@ class StripeController extends AbstractController
 
         $data[] = [
           "product" => $produit,
-          "quantity" => $quantity
+          "quantity" => $quantity,
         ];
 
         $total += $produit->getPrice() * $quantity;
