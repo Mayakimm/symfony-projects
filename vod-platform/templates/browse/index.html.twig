@@ -3,18 +3,180 @@
 {% block title %}Hello BrowseController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+  <div id="menu">
+    <img id="logo" src="netflims.png" />
+    <a href="">Accueil</a>
+    <a href="">Séries</a>
+    <a href="">Films</a>
+    <a href="">Nouveautés</a>
+    <a href="">Ma liste</a>
+    <img id="avatar" src="https://robohash.org/1" />
+  </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+  <div id="trailer">
+    <video autoplay muted loop id="myVideo">
+      <source src="extrait-bbb.mp4" type="video/mp4">
+    </video>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Users/maya/code/Mayakimm/symfony-projects/vod-platform/src/Controller/BrowseController.php</code></li>
-        <li>Your template at <code>/Users/maya/code/Mayakimm/symfony-projects/vod-platform/templates/browse/index.html.twig</code></li>
-    </ul>
-</div>
+    <div class="trailer-content">
+      <h1>Big Buck Bunny</h1>
+      <p>Lorem ipsum dolor sit amet lorem<br>
+        ipsum dolor sit amet. Lorem ipsum dolor sit amet.<br>
+        Lorem ipsum dolor sit.
+      </p>
+      <a href="" class="play-btn">Lecture</a>
+    </div>
+  </div>
+
+  <div class="movies">
+    <h2>Nouveautés sur Netflims</h2>
+    <div class="movies-list">
+      <div class="movie">
+        <a onClick="showChapters()">
+          <img src="bbb1.jpg">
+        </a>
+      </div>
+      <div class="movie">
+        <a onClick="showChapters()">
+          <img src="bbb2.jpg">
+        </a>
+      </div>
+      <div class="movie">
+        <a onClick="showChapters()">
+          <img src="bbb3.jpg">
+        </a>
+      </div>
+      <div class="movie">
+        <a onClick="showChapters()">
+          <img src="bbb3.jpg">
+        </a>
+      </div>
+      <div class="movie">
+        <a onClick="showChapters()">
+          <img src="bbb1.jpg">
+        </a>
+      </div>
+      <div class="movie">
+        <a onClick="showChapters()">
+          <img src="bbb2.jpg">
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="movies">
+    <h2>Nouveautés sur Netflims</h2>
+    <div class="movies-list">
+      <div class="movie">
+        <a onClick="showChapters()">
+          <img src="bbb1.jpg">
+        </a>
+      </div>
+      <div class="movie">
+        <a onClick="showChapters()">
+          <img src="bbb2.jpg">
+        </a>
+      </div>
+      <div class="movie">
+        <a onClick="showChapters()">
+          <img src="bbb3.jpg">
+        </a>
+      </div>
+      <div class="movie">
+        <a onClick="showChapters()">
+          <img src="bbb3.jpg">
+        </a>
+      </div>
+      <div class="movie">
+        <a onClick="showChapters()">
+          <img src="bbb1.jpg">
+        </a>
+      </div>
+      <div class="movie">
+        <a onClick="showChapters()">
+          <img src="bbb2.jpg">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <h2>Ma Liste</h2>
+  <div class="movies-list">
+    <div class="movie">
+      <a href="">
+        <img src="bbb2.jpg"/>
+      </a>
+      <div class="movie-progress-bg"></div>
+      <div class="movie-progress"></div>
+    </div>
+    <div class="movie">
+      <a href="">
+        <img src="bbb3.jpg"/>
+      </a>
+    </div>
+    <div class="movie">
+      <a href="">
+        <img src="bbb1.jpg"/>
+      </a>
+    </div>
+    <div class="movie">
+      <a href="">
+        <img src="bbb2.jpg"/>
+      </a>
+    </div>
+    <div class="movie">
+      <a href="">
+        <img src="bbb3.jpg"/>
+      </a>
+    </div>
+    <div class="movie">
+      <a href="">
+        <img src="bbb1.jpg"/>
+      </a>
+    </div>
+  </div>
+
+  <h2>Notre selection pour vous</h2>
+  <div class="movies-list">
+    <div class="movie">
+      <a href="">
+        <img src="bbb2.jpg"/>
+      </a>
+      <div class="movie-progress-bg"></div>
+      <div class="movie-progress"></div>
+    </div>
+    <div class="movie">
+      <a href="">
+        <img src="bbb3.jpg"/>
+      </a>
+    </div>
+    <div class="movie">
+      <a href="">
+        <img src="bbb1.jpg"/>
+      </a>
+    </div>
+    <div class="movie">
+      <a href="">
+        <img src="bbb2.jpg"/>
+      </a>
+    </div>
+    <div class="movie">
+      <a href="">
+        <img src="bbb3.jpg"/>
+      </a>
+    </div>
+    <div class="movie">
+      <a href="">
+        <img src="bbb1.jpg"/>
+      </a>
+    </div>
+  </div>
+
+  <div id="popup-container">
+    <div id="popup">
+      <button id="close-btn" onClick="closeChapters()">X</button>
+      <img src="bbb1.jpg"/>
+
+      <!-- chapitre -->
+    </div>
+  </div>
 {% endblock %}
