@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* Define font-family variables */
+:root {
+  --font-primary: 'Instrument Serif', serif;
+  --font-secondary: 'Instrument Sans', sans-serif;
+  --font-tertiary: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #FFFCF0;
+}
+.logo {
+  text-align: center; /* Center align text for all screen sizes */
+}
+
+
+@media (max-width: 770px) {
+
+  .by-maya {
+    display: block; /* Show 'by maya' on small screens */
+    font-size: 32px; /* Adjust font size if needed */
+    font-style: italic; /* Ensure it remains italic */
+  }
+}
