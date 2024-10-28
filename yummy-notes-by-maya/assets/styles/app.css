@@ -22,4 +22,10 @@ body {
     font-size: 32px; /* Adjust font size if needed */
     font-style: italic; /* Ensure it remains italic */
   }
+
+  .cards {
+    width: 600px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
 }

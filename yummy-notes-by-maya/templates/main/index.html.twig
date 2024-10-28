@@ -5,7 +5,7 @@
 {% block body %}
 
 <!-- navbar and background image -->
-<div class="banner" style="position: relative; filter: contrast(0.8); background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('imgs/main.jpg'); background-size: cover; background-position: center; height:70vh ;">
+<div class="banner" style="margin-bottom:80px; position: relative; filter: contrast(0.8); background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('imgs/main.jpg'); background-size: cover; background-position: center; height:70vh ;">
   <div class="container p-5">
     <div class="pages d-flex justify-content-between align-items-center">
       <div class="left-sided-pages d-flex justify-content-between">
@@ -38,7 +38,29 @@
       <div class="btn" style="background-color: #F6F8A1; font-family: var(--font-primary);">Search</div>
     </div>
   </div>
-
 </div>
 
+
+  <div class="cards d-flex justify-content-between" id="highlights" style="margin: 0 auto; width: 1000px;">
+    <div class="card-category" style="position: relative; padding:44px 28px; background-color: white; height: 240px; width: 240px; margin-right: 16px; box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+      <h6 style="text-align: end; font-family: var(--font-secondary); font-size: 18px; font-style: italic;">FAVORITES</h6>
+      <p style="text-align: end; font-family: var(--font-secondary); font-size: 12px;">We have made a selection of<br>
+        our customers' favorite recipes
+      </p>
+      <div class="btn" style="position: absolute; bottom: 20px; left: 20px; background-color:#F6F8A1; font-family: var(--font-primary);">SeeAll</div>
+    </div>
+
+    <div class="card-category" style="background-color: white; height: 240px; width: 240px; margin-right:16px; box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+      Lunch
+    </div>
+
+    <div class="card-category" style="background-color: white; height: 240px; width: 240px; margin-right:16px; box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+      Dinner
+    </div>
+
+    <div class="card-category" style="background-color: white; height: 240px; width: 240px; margin-right:16px; box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+      Dinner
+    </div>
+  </div>
+</div>
 {% endblock %}
