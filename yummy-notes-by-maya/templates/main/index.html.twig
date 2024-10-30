@@ -41,7 +41,7 @@
 </div>
 
 <!-- cards section -->
-<div class="cards d-flex justify-content-between" id="highlights" style="margin: 0 auto; width: 1000px;">
+<div class="cards d-flex justify-content-between mb-5" id="highlights" style="margin: 0 auto; width: 1000px;">
   <div class="card-category" style="position: relative; padding:44px 28px; background-color: white; height: 220px; width: 240px; margin-right: 16px; box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1); border-radius: 10px;">
     <h6 style="text-align: end; font-family: var(--font-secondary); font-size: 18px; font-style: italic;">FAVORITES</h6>
     <p style="text-align: end; font-family: var(--font-secondary); font-size: 12px;">We have made a selection of<br>
@@ -65,9 +65,34 @@
 
 
 <!-- category section -->
-<div class="categories">
-  <div class="category">
-    <img src="{{menu.photo}}" alt="{{menu.name}}-img" style="width: 80%; height: 120px; margin: 10px;object-fit: cover;">
-  </div>
+<div class="categories" style="margin: 0 auto; width: 1000px;">
+  {% for category in categories %}
+    {% if category == categories[0] %}
+      <div class="d-flex justify-content-between w-100">
+        <div class="category" style="position:relative; width: 65%; height:200px; background-size: cover; background-position: center; background-image: url({{category.photo}}); margin :16px 16px 0px 0px; box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+          <h2 style="font-family: var(--font-primary); font-size: 32px; font-style: italic; color: white; position: absolute; top:20px; right:30px;">{{category.name}}</h2>
+          <div class="btn" style="position: absolute; bottom: 20px; left: 20px; background-color:#F6F8A1; font-family: var(--font-primary);">SeeAll</div>
+        </div>
+      {% elseif category == categories[1] %}
+        <div class="category" style="position:relative; width: 35%;height:200px; background-size: cover; background-position: center; background-image: url({{category.photo}}); margin :16px 16px 0px 0px; box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+          <h2 style="font-family: var(--font-primary); font-size: 32px; font-style: italic; color: white; position: absolute; top:20px; right:30px;">{{category.name}}</h2>
+          <div class="btn" style="position: absolute; bottom: 20px; left: 20px; background-color:#F6F8A1; font-family: var(--font-primary);">SeeAll</div>
+        </div>
+      </div>
+    {% endif %}
+    {% if category == categories[2] %}
+    <div class="d-flex align-items-center">
+      <div class="category" style="position:relative; width: 45%;height:200px; background-size: cover; background-position: center; background-image: url({{category.photo}}); margin :16px 16px 0px 0px; box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+        <h2 style="font-family: var(--font-primary); font-size: 32px; font-style: italic; color: white; position: absolute; top:20px; right:30px;">{{category.name}}</h2>
+        <div class="btn" style="position: absolute; bottom: 20px; left: 20px; background-color:#F6F8A1; font-family: var(--font-primary);">SeeAll</div>
+      </div>
+      <div>
+        <h2 style="font-family: var(--font-primary); font-size: 32px;">
+          <a href="" style="text-decoration: none; color: rgb(202, 198, 178);">>>     <em>discover more</em></a>
+        </h2>
+      </div>
+    </div>
+    {% endif %}
+  {% endfor %}
 </div>
 {% endblock %}

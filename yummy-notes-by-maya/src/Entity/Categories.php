@@ -27,6 +27,9 @@ class Categories
     #[ORM\ManyToMany(targetEntity: Menus::class, mappedBy: 'category')]
     private Collection $menuses;
 
+    #[ORM\Column(length: 255)]
+    private ?string $photo = null;
+
     public function __construct()
     {
         $this->menuses = new ArrayCollection();
@@ -84,6 +87,18 @@ class Categories
         if ($this->menuses->removeElement($menus)) {
             $menus->removeCategory($this);
         }
+
+        return $this;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(string $photo): static
+    {
+        $this->photo = $photo;
 
         return $this;
     }
