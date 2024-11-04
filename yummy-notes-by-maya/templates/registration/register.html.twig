@@ -33,8 +33,11 @@
       {{ form_widget(registrationForm.plainPassword.first, {'attr': {'style': 'height:74px; margin-bottom:10px; font-family: var(--font-secondary); padding-left: 30px; background-color: #F8F5DB; border:none; border-radius:12px;'}}) }}
       {{ form_widget(registrationForm.plainPassword.second, {'attr': {'style': 'height:74px; margin-bottom:10px; font-family: var(--font-secondary); padding-left: 30px; background-color: #F8F5DB; border:none; border-radius:12px;'}}) }}
     </div>
-    <!-- {{ form_widget(registrationForm.agreeTerms) }} -->
-    <div class="container m-auto w-50">
+    <div class="form-group">
+      {{ form_widget(registrationForm.agreeTerms) }}
+      {{ form_label(registrationForm.agreeTerms, 'Agree to terms and conditions') }}
+    </div>
+    <div class="container m-auto w-50 mt-5">
       <button type="submit" class="btn" style="margin:0 auto; width: 200px; background-color: #F6F8A1; font-family: var(--font-primary); font-size: 26px;"><strong>Create account</strong></button>
     </div>
     {{ form_end(registrationForm) }}
