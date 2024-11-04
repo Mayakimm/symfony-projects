@@ -58,3 +58,30 @@ body {
 .footer .fa-heart {
   color: #D23333;
 }
+
+
+/* login */
+
+/* Style for input field with underline border */
+.custom-input {
+  border: none;
+  border-bottom: 2px solid #ccc; /* Underline border */
+  padding: 8px 0;
+  font-family: var(--font-secondary); /* Optional for font consistency */
+  font-size: 16px;
+  background-color: transparent;
+  outline: none;
+}
+
+/* Change border color on focus */
+.custom-input:focus {
+  border-bottom-color: #333; /* Darker underline on focus */
+  background-color: transparent;
+}
+
+/* Placeholder styling */
+.custom-input::placeholder {
+  color: #aaa; /* Placeholder text color */
+  font-style: italic;
+  background-color: transparent;
+}
