@@ -3,31 +3,52 @@
 {% block title %}The Menu{% endblock %}
 
 {% block body %}
-<!-- Navbar -->
-<div class="banner" style="margin-bottom:80px; position: relative; filter: contrast(0.8); background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('imgs/main.jpg'); background-size: cover;  background-position: 20% 18%; height:160px ;">
+<div class="banner" style="margin-bottom:80px; position: relative; background-image: url('/{{ menu.photo }}'); background-size: cover; background-position: center; height:70vh ;">
   <div class="container p-5">
-    <div class="pages m-auto">
+    <div class="pages d-flex justify-content-between align-items-center">
+      <div class="left-sided-pages d-flex justify-content-between">
+        <a href="{{path('app_home')}}" class="text-white text-decoration-none me-5" style="font-family: var(--font-secondary); font-size: 16px;">home</a>
+        <a href="{{path('app_about')}}" class="text-white text-decoration-none me-5" style="font-family: var(--font-secondary); font-size: 16px;">about</a>
+      </div>
       <div class="logo text-center">
         <a href="{{ path('app_home') }}" class="text-white text-decoration-none" style="font-family: var(--font-primary); font-size: 32px; font-style: italic;">
           yummy notes <span class="by-maya">by maya</span>
         </a>
       </div>
-
+      {% if app.user %}
+      <div class="right-sided-pages">
+        <a href="{{path('app_logout')}}" class="text-white text-decoration-none ms-5" style="font-family: var(--font-secondary); font-size: 16px;">logout</a>
+      </div>
+      {% else %}
+      <div class="right-sided-pages">
+        <a href="{{path('app_login')}}" class="text-white text-decoration-none ms-5" style="font-family: var(--font-secondary); font-size: 16px;">login</a>
+      </div>
+      {% endif %}
     </div>
   </div>
 </div>
 
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">{{ menu.name }}</h1>
-        <img src="/uploads/{{ menu.photo }}" style="width:100%; margin-top: 20px; margin-bottom:20px;" />
-        <p class="lead text-body-secondary">{{ menu.description | raw }}</p>
-        <p>
-          <a href="#" class="btn btn-secondary my-2">En savoir plus</a>
-        </p>
-
+<div class="mt-5">
+  <div class="mx-auto" style="padding:0px 300px">
+    <div class="d-flex justify-content-between">
+      <div id="left-side-details">
+        <div class="menu-intro" style="background-color: white; border-radius: 10px; padding: 30px; margin:20px; box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1); ">
+          <h1 class="fw-light" style="font-family: var(--font-secondary); font-size: 40px;">{{ menu.name }}</h1>
+          <p class="lead text-body-secondary mt-3" style="font-family: var(--font-secondary); font-size: 16px;">{{ menu.description | raw }}</p>
+        </div>
+        <div class="menu-info" style="background-color: white; border-radius: 10px; padding: 30px; margin:20px; box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1); margin-top: 50px;">
+          <span class="lead text-body-secondary" style="font-family: var(--font-secondary); font-size: 16px;"><span>x</span>{{ menu.time | raw }}</span>
+          <span class="lead text-body-secondary" style="font-family: var(--font-secondary); font-size: 16px;"><span>x</span>{{ menu.quantity | raw }}</span>
+          <p>ingredients: <br>
+            {{menu.ingredients}}
+          </p>
+        </div>
+      </div>
+      <div class="menu-funfact" id="right-side-details" style="background-color: white; border-radius: 10px; padding: 30px; margin:20px; box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1); width:1200px;">
+        <p style="text-align:end; font-family: var(--font-secondary); font-size: 16px;">fun fact?</p>
+        <p class="lead text-body-secondary" style="font-family: var(--font-secondary); font-size: 16px;">{{ menu.funfact | raw }}</p>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 {% endblock %}

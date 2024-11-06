@@ -40,6 +40,9 @@ class Menus
     #[ORM\ManyToMany(targetEntity: Categories::class, inversedBy: 'menuses')]
     private Collection $category;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $ingredients = null;
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
@@ -142,6 +145,18 @@ class Menus
     public function removeCategory(Categories $category): static
     {
         $this->category->removeElement($category);
+
+        return $this;
+    }
+
+    public function getIngredients(): ?string
+    {
+        return $this->ingredients;
+    }
+
+    public function setIngredients(string $ingredients): static
+    {
+        $this->ingredients = $ingredients;
 
         return $this;
     }
