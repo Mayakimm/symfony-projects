@@ -64,7 +64,7 @@
         <p style="font-family: var(--font-secondary); font-size: 12px; margin-bottom: 4px; color: black;">{{menu.name}}</p>
         <p style="font-family: var(--font-secondary); font-size: 12px; margin-bottom: 0px; color: black;"><strong>{{menu.time}} min</strong></p>
       </div>
-      <div class="btn" style="position: absolute; bottom: 20px; right: 20px; background-color:#F6F8A1; font-family: var(--font-primary);">More</div>
+      <a href="{{path('app_menu', { 'id' : menu.id })}}" class="btn" style="position: absolute; bottom: 20px; right: 20px; background-color:#F6F8A1; font-family: var(--font-primary);">More</a>
     </div>
   {% endfor %}
 </div>

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}The Menu{% endblock %}
+
+{% block body %}
+<!-- Navbar -->
+<div class="banner" style="margin-bottom:80px; position: relative; filter: contrast(0.8); background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('imgs/main.jpg'); background-size: cover;  background-position: 20% 18%; height:160px ;">
+  <div class="container p-5">
+    <div class="pages m-auto">
+      <div class="logo text-center">
+        <a href="{{ path('app_home') }}" class="text-white text-decoration-none" style="font-family: var(--font-primary); font-size: 32px; font-style: italic;">
+          yummy notes <span class="by-maya">by maya</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">{{ menu.name }}</h1>
+        <img src="/uploads/{{ menu.photo }}" style="width:100%; margin-top: 20px; margin-bottom:20px;" />
+        <p class="lead text-body-secondary">{{ menu.description | raw }}</p>
+        <p>
+          <a href="#" class="btn btn-secondary my-2">En savoir plus</a>
+        </p>
+
+      </div>
+    </div>
+  </section>
+{% endblock %}
