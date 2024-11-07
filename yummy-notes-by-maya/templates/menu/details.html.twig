@@ -28,28 +28,38 @@
   </div>
 </div>
 
-<div class="mt-5">
-  <div class="mx-auto" style="padding:0px 300px">
-    <div class="d-flex justify-content-between">
-      <div id="left-side-details">
-        <div class="menu-intro" style="background-color: white; border-radius: 10px; padding: 30px; margin:20px; box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1); ">
-          <h1 class="fw-light" style="font-family: var(--font-secondary); font-size: 40px;">{{ menu.name }}</h1>
-          <p class="lead text-body-secondary mt-3" style="font-family: var(--font-secondary); font-size: 16px;">{{ menu.description | raw }}</p>
-        </div>
-        <div class="menu-info" style="background-color: white; border-radius: 10px; padding: 30px; margin:20px; box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1); margin-top: 50px;">
-          <span class="lead text-body-secondary" style="font-family: var(--font-secondary); font-size: 16px;"><i class="fa-solid fa-clock"></i>  {{ menu.time | raw }}min</span>
-          <span class="lead text-body-secondary" style="font-family: var(--font-secondary); font-size: 16px;"><i class="fa-solid fa-user-group"></i>  {{ menu.quantity | raw }}persons</span>
-          <p>ingredients: <br>
-            {{menu.ingredients}}
-          </p>
-        </div>
 
-      </div>
-      <div class="menu-funfact" id="right-side-details" style="background-color: white; border-radius: 10px; padding: 30px; margin:20px; box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1); width:1200px;">
-        <p style="text-align:end; font-family: var(--font-secondary); font-size: 16px;">fun fact?</p>
-        <p class="lead text-body-secondary" style="font-family: var(--font-secondary); font-size: 16px;">{{ menu.funfact | raw }}</p>
+<div class="d-flex flex-column align-items-center">
+  <div class="mt-5" id="details">
+    <div class="mx-auto" style="padding:0px 300px">
+      <div class="d-flex justify-content-between">
+        <div id="left-side-details">
+          <div class="menu-intro" style="background-color: white; border-radius: 10px; padding: 30px; margin:20px; box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1); ">
+            <h1 class="fw-light" style="font-family: var(--font-secondary); font-size: 40px;">{{ menu.name }}</h1>
+            <p class="lead text-body-secondary mt-3" style="font-family: var(--font-secondary); font-size: 16px;">{{ menu.description | raw }}</p>
+          </div>
+          <div class="menu-info" style="background-color: white; border-radius: 10px; padding: 30px; margin:20px; box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1); margin-top: 50px;">
+            <span class="lead text-body-secondary" style="font-family: var(--font-secondary); font-size: 16px;"><i class="fa-solid fa-clock"></i>  {{ menu.time | raw }}min</span>
+            <span class="lead text-body-secondary" style="font-family: var(--font-secondary); font-size: 16px;"><i class="fa-solid fa-user-group"></i>  {{ menu.quantity | raw }}persons</span>
+            <p>ingredients: <br>
+              {{menu.ingredients}}
+            </p>
+          </div>
+
+        </div>
+        <div class="menu-funfact" id="right-side-details" style="background-color: white; border-radius: 10px; padding: 30px; margin:20px; box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1); width:1200px;">
+          <p style="text-align:end; font-family: var(--font-secondary); font-size: 16px;">fun fact?</p>
+          <p class="lead text-body-secondary" style="font-family: var(--font-secondary); font-size: 16px;">{{ menu.funfact | raw }}</p>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="payment mt-5">
+    <div class="btn" style="background-color: #F6F8A1; font-family: var(--font-primary); font-size: 40px; width: 274px; height: 91px; text-align: center; display: flex; align-items: center; justify-content: center;">
+      Open the recipe
+    </div>
+  </div>
+
 </div>
 {% endblock %}
