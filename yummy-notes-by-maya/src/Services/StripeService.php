@@ -34,7 +34,7 @@ class StripeService implements StripeServiceInterface {
       'payment_method_type' =>['card'],
       'line_items' => [
           [
-            $panier
+            $this->getLinesItems($panier),
           ]
         ],
         'mode'=> 'payment',
@@ -44,5 +44,30 @@ class StripeService implements StripeServiceInterface {
     $mySession->set(self::STRIPE_PAYMENT_ORDER, $id_order->getId());
 
     return $session->url;
+  }
+
+  public function getSessionId(): mixed
+  {
+    return $this->reauestStack->getSession()->get(self::STRIPE_PAYMENT_ID);
+  }
+
+  public function getSessionOrder(): mixed
+  {
+    return $this->reauestStack->getSession()->get(self::STRIPE_PAYMENT_ORDER);
+  }
+
+  private function getLinesItems($panier): array
+  {
+    $menu = [];
+
+    foreach($panier as $item)
+    {
+      $menu['price_data']['currency'] = "eur";
+      $menu['price_data']['product_data']['name'] = $item["menus"]->getPrice() * 100;
+      $menu['quantity'] = $item['quantity'];
+      $menus[] = $menu;
+
+      return $menus;
+    }
   }
 }
