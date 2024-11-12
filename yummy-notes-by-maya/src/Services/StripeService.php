@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Stripe\Checkout\Session;
 use Stripe\Stripe;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -25,6 +26,23 @@ class StripeService implements StripeServiceInterface {
 
   public function Payment($panier, $id_order): string
   {
-    
+    $mySession = $this->reauestStack->getSession();
+    // pour générer le formulaire de paiement Stripe via la session
+    $session = Session::create([
+      'success_url'=>$this->urlGenerator->generate('app_stripe_success',['order' => $id_order->getId()], UrlGeneratorInterface::ABSOLUTE_URL),
+      'cancel_url'=>$this->urlGenerator->generate('app_stripe_cancel',['order' => $id_order->getId()], UrlGeneratorInterface::ABSOLUTE_URL),
+      'payment_method_type' =>['card'],
+      'line_items' => [
+          [
+            $panier
+          ]
+        ],
+        'mode'=> 'payment',
+    ]);
+
+    $mySession->set(self::STRIPE_PAYMENT_ID, $session->id);
+    $mySession->set(self::STRIPE_PAYMENT_ORDER, $id_order->getId());
+
+    return $session->url;
   }
 }
