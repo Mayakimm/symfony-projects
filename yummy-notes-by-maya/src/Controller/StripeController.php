@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\MenusRepository;
 use App\Services\StripeServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
