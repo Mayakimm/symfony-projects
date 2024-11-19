@@ -3,18 +3,49 @@
 {% block title %}Hello PanierController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<section class="p-5">
+  <div class="relative overflow-x-auto">
+      <table class="w-full">
+          <thead>
+              <tr>
+                  <th scope="col" class="px-6 py-3">
+                      Menu
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                      Time
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                      Quantity
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                      Price
+                  </th>
+              </tr>
+          </thead>
+          <tbody>
+            {% for item in data %}
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td class="px-6 py-4">
+                  {{item.menu.name}}
+                </td>
+                <td class="px-6 py-4">
+                  {{item.menu.time}}
+                </td>
+                <td class="px-6 py-4">
+                  {{item.quantity}}
+                </td>
+                <td class="px-6 py-4">
+                  {{item.menu.time}}
+                </td>
+              </tr>
+            {% endfor %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Users/maya/code/Mayakimm/symfony-projects/yummy-notes-by-maya/src/Controller/PanierController.php</code></li>
-        <li>Your template at <code>/Users/maya/code/Mayakimm/symfony-projects/yummy-notes-by-maya/templates/panier/index.html.twig</code></li>
-    </ul>
-</div>
+
+          </tbody>
+      </table>
+  </div>
+
+</section>
+
 {% endblock %}
