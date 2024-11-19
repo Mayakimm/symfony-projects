@@ -26,18 +26,15 @@ class StripeService implements StripeServiceInterface {
 
   public function Payment($panier, $id_order): string
   {
-    $mySession = $this->reauestStack->getSession();
+    $mySession = $this->requestStack->getSession();
     // pour générer le formulaire de paiement Stripe via la session
+
     $session = Session::create([
       'success_url'=>$this->urlGenerator->generate('app_stripe_success',['order' => $id_order->getId()], UrlGeneratorInterface::ABSOLUTE_URL),
       'cancel_url'=>$this->urlGenerator->generate('app_stripe_cancel',['order' => $id_order->getId()], UrlGeneratorInterface::ABSOLUTE_URL),
-      'payment_method_type' =>['card'],
-      'line_items' => [
-          [
-            $this->getLinesItems($panier),
-          ]
-        ],
-        'mode'=> 'payment',
+      'payment_method_types' =>['card'],
+      'line_items' => $this->getLinesItems($panier),
+      'mode'=> 'payment',
     ]);
 
     $mySession->set(self::STRIPE_PAYMENT_ID, $session->id);
@@ -48,26 +45,34 @@ class StripeService implements StripeServiceInterface {
 
   public function getSessionId(): mixed
   {
-    return $this->reauestStack->getSession()->get(self::STRIPE_PAYMENT_ID);
+    return $this->requestStack->getSession()->get(self::STRIPE_PAYMENT_ID);
   }
 
   public function getSessionOrder(): mixed
   {
-    return $this->reauestStack->getSession()->get(self::STRIPE_PAYMENT_ORDER);
+    return $this->requestStack->getSession()->get(self::STRIPE_PAYMENT_ORDER);
   }
 
   private function getLinesItems($panier): array
   {
-    $menu = [];
+    $menus = [];
 
     foreach($panier as $item)
     {
-      $menu['price_data']['currency'] = "eur";
-      $menu['price_data']['product_data']['name'] = $item["menus"]->getPrice() * 100;
-      $menu['quantity'] = $item['quantity'];
-      $menus[] = $menu;
+      $product = [
+      'price_data' => [
+            'currency' => 'eur',
+            'product_data' => [
+                'name' => $item["menu"]->getName(),
+            ],
+            'unit_amount' => $item['menu']->getPrice() * 100, // Convert to cents
+        ],
+        'quantity' => $item['quantity'],
+      ];
+
+      $menus[] = $product;
+    }
 
       return $menus;
     }
   }
-}

@@ -25,7 +25,7 @@ class PanierController extends AbstractController
           "menu"=>$produit,
           "quantity"=>$quantity
         ];
-        $total += $produit->getTime() * $quantity;
+        $total += $produit->getPrice() * $quantity;
       }
 
       // dd($total);

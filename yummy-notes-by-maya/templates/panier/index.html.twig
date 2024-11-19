@@ -39,7 +39,7 @@
                   {{item.quantity}}
                 </td>
                 <td class="px-6 py-4">
-                  {{item.menu.time}}
+                  {{item.menu.price}}
                 </td>
                 <td class="px-6 py-4">
                   <a href="{{ path('app_add_panier', {id:item.menu.id}) }}" class="btn btn-primary">+</a>
@@ -53,7 +53,11 @@
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
               <td class="px-6 py-4">Total</td>
               <td class="px-6 py-4">{{total}}$</td>
-              <td class="px-6 py-4"><a href="{{ path('app_trash_panier')}}" class="btn btn-danger">delete all</a></td>
+              <td class="px-6 py-4">
+                <a href="{{ path('app_trash_panier')}}" class="btn btn-danger">delete all</a>
+                <a href="{{ path('app_stripe')}}" class="btn btn-success">Pay</a>
+              </td>
+
             </tr>
           </tfoot>
       </table>

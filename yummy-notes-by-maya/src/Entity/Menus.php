@@ -43,6 +43,9 @@ class Menus
     #[ORM\Column(type: Types::TEXT)]
     private ?string $ingredients = null;
 
+    #[ORM\Column]
+    private ?int $price = null;
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
@@ -157,6 +160,18 @@ class Menus
     public function setIngredients(string $ingredients): static
     {
         $this->ingredients = $ingredients;
+
+        return $this;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price): static
+    {
+        $this->price = $price;
 
         return $this;
     }
