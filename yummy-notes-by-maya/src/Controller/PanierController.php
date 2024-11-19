@@ -50,4 +50,42 @@ class PanierController extends AbstractController
 
       return $this->redirectToRoute("app_panier");
     }
+
+    #[Route('/panier/delete/{id}', name: 'app_delete_panier')]
+    public function delete($id, SessionInterface $session): Response
+    {
+      $panier = $session->get('panier', []);
+
+      if(!empty($panier[$id])) {
+        if($panier[$id]>1){
+          $panier[$id]--;}
+        else{
+        unset($panier[$id]);
+      }}
+
+      $session->set('panier', $panier);
+
+      return $this->redirectToRoute("app_panier");
+    }
+
+    #[Route('/panier/remove/{id}', name: 'app_remove_panier')]
+    public function remove($id, SessionInterface $session): Response
+    {
+      $panier = $session->get('panier', []);
+
+      if(!empty($panier[$id])){
+        unset($panier[$id]);
+      }
+
+      $session->set('panier', $panier);
+
+        return $this->redirectToRoute("app_panier");
+    }
+
+    #[Route('/panier/trash', name: 'app_trash_panier')]
+    public function trash(SessionInterface $session): Response
+    {
+      $session->remove('panier');
+      return $this->redirectToRoute("app_panier");
+    }
 }

@@ -21,6 +21,9 @@
                   <th scope="col" class="px-6 py-3">
                       Price
                   </th>
+                  <th scope="col" class="px-6 py-3">
+                    Action
+                  </th>
               </tr>
           </thead>
           <tbody>
@@ -38,11 +41,21 @@
                 <td class="px-6 py-4">
                   {{item.menu.time}}
                 </td>
+                <td class="px-6 py-4">
+                  <a href="{{ path('app_add_panier', {id:item.menu.id}) }}" class="btn btn-primary">+</a>
+                  <a href="{{ path('app_delete_panier', {id:item.menu.id}) }}" class="btn btn-light">-</a>
+                  <a href="{{ path('app_remove_panier', {id:item.menu.id}) }}" class="btn btn-danger">delete</a>
+                </td>
               </tr>
             {% endfor %}
-
-
           </tbody>
+          <tfoot>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <td class="px-6 py-4">Total</td>
+              <td class="px-6 py-4">{{total}}$</td>
+              <td class="px-6 py-4"><a href="{{ path('app_trash_panier')}}" class="btn btn-danger">delete all</a></td>
+            </tr>
+          </tfoot>
       </table>
   </div>
 
