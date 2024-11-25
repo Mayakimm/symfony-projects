@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Entity\Menus;
+use App\Entity\Order;
 use App\Entity\Categories;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,4 +32,21 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+
+    #[Route('/profile', name: 'app_profile')]
+    public function profile(EntityManagerInterface $entityManager): Response
+    {
+      $user = $this->getUser(); // Retrieves the current logged-in user
+      // Fetch orders made by the current user
+      $orders = $entityManager->getRepository(Order::class)->findBy(['user' => $user]);
+  
+      return $this->render('main/profile.html.twig', [
+          'controller_name' => 'MainController',
+          'first_name' => $user->getFirstName(),
+          'last_name' => $user->getLastName(),
+          'pseudo' => $user->getPseudo(),
+          'orders' => $orders, // Pass the orders to the template
+      ]);
+    }
+
 }

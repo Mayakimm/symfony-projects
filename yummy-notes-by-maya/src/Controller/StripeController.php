@@ -62,6 +62,10 @@ class StripeController extends AbstractController
       foreach($panier as $key => $quantity) {
         $menu = $this->menusRepository->find($key);
 
+        if ($menu) {
+          $order->addMenu($menu); // Associate menu with the order
+        }
+
         $data[] = [
           "menu" => $menu,
           "quantity" => $quantity

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OrderRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -26,6 +28,17 @@ class Order
 
     #[ORM\Column]
     private ?bool $isPaid = null;
+
+    /**
+     * @var Collection<int, Menus>
+     */
+    #[ORM\ManyToMany(targetEntity: Menus::class, inversedBy: 'orders')]
+    private Collection $menu;
+
+    public function __construct()
+    {
+        $this->menu = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -76,6 +89,30 @@ class Order
     public function setPaid(bool $isPaid): static
     {
         $this->isPaid = $isPaid;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Menus>
+     */
+    public function getMenu(): Collection
+    {
+        return $this->menu;
+    }
+
+    public function addMenu(Menus $menu): static
+    {
+        if (!$this->menu->contains($menu)) {
+            $this->menu->add($menu);
+        }
+
+        return $this;
+    }
+
+    public function removeMenu(Menus $menu): static
+    {
+        $this->menu->removeElement($menu);
 
         return $this;
     }
