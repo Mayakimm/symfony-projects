@@ -4,6 +4,28 @@
 
 {% block body %}
 
+<!-- Navbar -->
+<div class="banner" style="margin-bottom:80px; position: relative; filter: contrast(0.8); background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('imgs/main.jpg'); background-size: cover;  background-position: 20% 18%; height:160px ;">
+  <div class="container p-5">
+    <div class="pages d-flex justify-content-between align-items-center">
+      <div class="left-sided-pages d-flex justify-content-between">
+        <a href="{{path('app_home')}}" class="text-white text-decoration-none me-5" style="font-family: var(--font-secondary); font-size: 16px;">home</a>
+        <a href="{{path('app_about')}}" class="text-white text-decoration-none me-5" style="font-family: var(--font-secondary); font-size: 16px;">about</a>
+      </div>
+      <div class="logo text-center">
+        <a href="{{ path('app_home') }}" class="text-white text-decoration-none" style="font-family: var(--font-primary); font-size: 32px; font-style: italic;">
+          yummy notes <span class="by-maya">by maya</span>
+        </a>
+      </div>
+      <div class="right-sided-pages">
+        <a href="{{ path('app_panier') }}" class="text-white text-decoration-none ms-5" style="font-family: var(--font-secondary); font-size: 16px;">cart</a>
+        <a href="{{ path('app_profile') }}" class="text-white text-decoration-none ms-5" style="font-family: var(--font-secondary); font-size: 16px;">my page</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <section class="p-5">
   <div class="relative overflow-x-auto">
       <table class="w-full">

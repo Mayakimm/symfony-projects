@@ -17,7 +17,8 @@
       </div>
       {% if app.user %}
       <div class="right-sided-pages">
-        <a href="{{path('app_logout')}}" class="text-white text-decoration-none ms-5" style="font-family: var(--font-secondary); font-size: 16px;">logout</a>
+        <a href="{{ path('app_panier') }}" class="text-white text-decoration-none ms-5" style="font-family: var(--font-secondary); font-size: 16px;">cart</a>
+        <a href="{{ path('app_profile') }}" class="text-white text-decoration-none ms-5" style="font-family: var(--font-secondary); font-size: 16px;">my page</a>
       </div>
       {% else %}
       <div class="right-sided-pages">
