@@ -25,66 +25,68 @@
   </div>
 </div>
 
-
-<section class="p-5">
-  <div class="relative overflow-x-auto">
-      <table class="w-full">
-          <thead>
-              <tr>
-                  <th scope="col" class="px-6 py-3">
-                      Menu
-                  </th>
-                  <th scope="col" class="px-6 py-3">
-                      Time
-                  </th>
-                  <th scope="col" class="px-6 py-3">
-                      Quantity
-                  </th>
-                  <th scope="col" class="px-6 py-3">
-                      Price
-                  </th>
-                  <th scope="col" class="px-6 py-3">
-                    Action
-                  </th>
-              </tr>
-          </thead>
-          <tbody>
-            {% for item in data %}
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td class="px-6 py-4">
-                  {{item.menu.name}}
-                </td>
-                <td class="px-6 py-4">
-                  {{item.menu.time}}
-                </td>
-                <td class="px-6 py-4">
-                  {{item.quantity}}
-                </td>
-                <td class="px-6 py-4">
-                  {{item.menu.price}}
-                </td>
-                <td class="px-6 py-4">
-                  <a href="{{ path('app_add_panier', {id:item.menu.id}) }}" class="btn btn-primary">+</a>
-                  <a href="{{ path('app_delete_panier', {id:item.menu.id}) }}" class="btn btn-light">-</a>
-                  <a href="{{ path('app_remove_panier', {id:item.menu.id}) }}" class="btn btn-danger">delete</a>
-                </td>
-              </tr>
-            {% endfor %}
-          </tbody>
-          <tfoot>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <td class="px-6 py-4">Total</td>
-              <td class="px-6 py-4">{{total}}$</td>
-              <td class="px-6 py-4">
-                <a href="{{ path('app_trash_panier')}}" class="btn btn-danger">delete all</a>
-                <a href="{{ path('app_stripe')}}" class="btn btn-success">Pay</a>
-              </td>
-
+<div class="container p-5" style="position: relative;">
+  <h1 class="mb-3" style="font-family: var(--font-primary); font-size: 32px; font-style: italic;"><strong>My Cart</strong></h1>
+  <section class="">
+    <div class="relative overflow-x-auto bg-white" style="margin-top:30px; padding: 50px; border-radius: 30px; box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1);">
+        <table class="w-100">
+            <thead>
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Menu
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Time
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Quantity
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Price
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for item in data %}
+                <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
+                  <td class="px-6 py-4">
+                    {{item.menu.name}}
+                  </td>
+                  <td class="px-6 py-4">
+                    {{item.menu.time}}
+                  </td>
+                  <td class="px-6 py-4">
+                    {{item.quantity}}
+                  </td>
+                  <td class="px-6 py-4">
+                    {{item.menu.price}}
+                  </td>
+                  <td class="px-6 py-4">
+                    <a href="{{ path('app_add_panier', {id:item.menu.id}) }}" class="btn btn-primary">+</a>
+                    <a href="{{ path('app_delete_panier', {id:item.menu.id}) }}" class="btn btn-light">-</a>
+                    <a href="{{ path('app_remove_panier', {id:item.menu.id}) }}" class="btn btn-danger">delete</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+            <tfoot>
+              <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
+                <td class="px-6 py-4">Total</td>
+                <td class="px-6 py-4">{{ total }}$</td>
+                {% if total != 0 %}
+                    <td class="px-6 py-4">
+                        <a href="{{ path('app_trash_panier')}}" class="btn btn-danger">delete all</a>
+                        <a href="{{ path('app_stripe')}}" class="btn btn-success">Pay</a>
+                    </td>
+                {% endif %}
             </tr>
-          </tfoot>
-      </table>
-  </div>
 
-</section>
-
+            </tfoot>
+        </table>
+    </div>
+  </section>
+</div>
 {% endblock %}
